@@ -18,6 +18,51 @@ require_once locate_template('/lib/post-types.php');      // Custom post types
 require_once locate_template('/lib/metaboxes.php');       // Custom metaboxes
 require_once locate_template('/lib/custom.php');          // Custom functions
 
+
+/*******************************************************************/
+//						OPTIONS FRAMEWORK 
+/*******************************************************************/
+
+if ( !function_exists( 'optionsframework_init' ) ) {
+	
+	/* Set the file path based on whether the Options Framework Theme is a parent theme or child theme */
+	
+	if ( STYLESHEETPATH == TEMPLATEPATH ) {
+		define('OPTIONS_FRAMEWORK_URL', TEMPLATEPATH . '/admin/');
+		define('OPTIONS_FRAMEWORK_DIRECTORY', get_bloginfo('template_directory') . '/admin/');
+	} else {
+		define('OPTIONS_FRAMEWORK_URL', STYLESHEETPATH . '/admin/');
+		define('OPTIONS_FRAMEWORK_DIRECTORY', get_bloginfo('stylesheet_directory') . '/admin/');
+	}
+	
+	require_once (OPTIONS_FRAMEWORK_URL . 'options-framework.php');
+}
+
+/*******************************************************************/
+//						REQUIRE FUNCTIONS
+/*******************************************************************/
+
+/* Init */
+require_once(TEMPLATEPATH . '/lib/functions/init-functions.php');
+/* Resize Images */
+require_once(TEMPLATEPATH . '/lib/functions/resize-images.php');
+/* Post Fields */
+require_once(TEMPLATEPATH . '/lib/functions/post-fields.php');
+/* Embed Video */
+require_once(TEMPLATEPATH . '/lib/functions/embed-video.php');
+/* Portfolio post type */
+require_once(TEMPLATEPATH . '/lib/functions/portfolio-posttype.php');
+/* Portfolio custom fields */
+require_once(TEMPLATEPATH . '/lib/functions/portfolio-fields.php');
+/* Custom Widgets */
+require_once(TEMPLATEPATH . '/lib/functions/load-widgets.php');
+/* Sliders */
+require_once(TEMPLATEPATH . '/lib/functions/sliders.php');
+/* Fonts */
+require_once(TEMPLATEPATH . '/lib/functions/skins.php');
+/* Shortcodes */
+require_once(TEMPLATEPATH . '/lib/functions/shortcodes.php');
+
 function roots_setup() {
 
   // Make theme available for translation
